@@ -1,6 +1,6 @@
-# Decision Tree
+# 1. Decision Tree
 
-## Introduction
+## 1.1 Introduction
 
 Classification is a two-step process, learning step and prediction step, in machine learning. In the learning step, the model is developed based on given training data. In the prediction step, the model is used to predict the response for given data. Decision Tree is one of the easiest and popular classification algorithms to understand and interpret.
 
@@ -29,7 +29,7 @@ Types of decision trees are based on the type of target variable we have. It can
 - Categorical Variable Decision Tree: Decision Tree which has a categorical target variable then it called a Categorical variable decision tree.
 - Continuous Variable Decision Tree: Decision Tree has a continuous target variable then it is called Continuous Variable Decision Tree.
 
-## Important Terminology related to Decision Trees
+## 1.2 Important Terminology related to Decision Trees
 
 - Root Node: It represents the entire population or sample and this further gets divided into two or more homogeneous sets.
 - Splitting: It is a process of dividing a node into two or more sub-nodes.
@@ -47,7 +47,7 @@ Each node in the tree acts as a test case for some attribute, and each edge desc
 
 The primary challenge in the decision tree implementation is to identify which attributes do we need to consider as the root node and each level. Handling this is to know as the attributes selection. We have different attributes selection measures to identify the attribute which can be considered as the root note at each level.
 
-## How do Decision Trees work?
+## 1.3 How do Decision Trees work?
 
 The decision of making strategic splits heavily affects a tree’s accuracy. The decision criteria are different for classification and regression trees.
 
@@ -60,7 +60,7 @@ The algorithm selection is also based on the type of target variables. Let us lo
 The ID3 algorithm builds decision trees using a top-down greedy search approach through the space of possible branches with no backtracking. A greedy algorithm, as the name suggests, always makes the choice that seems to be the best at that moment.
 
 
-## Attribute Selection Measures
+## 1.4 Attribute Selection Measures
 
 If the dataset consists of N attributes then deciding which attribute to place at the root or at different levels of the tree as internal nodes is a complicated step. By just randomly selecting any node to be the root can’t solve the issue. If we follow a random approach, it may give us bad results with low accuracy.
 
@@ -77,13 +77,13 @@ These criteria will calculate values for every attribute. The values are sorted,
 
 While using Information Gain as a criterion, we assume attributes to be categorical, and for the Gini index, attributes are assumed to be continuous.
 
-## Recursive Binary Splitting
+## 1.5 Recursive Binary Splitting
 
 In this procedure all the features are considered and different split points are tried and tested using a cost function. The split with the best cost (or lowest cost) is selected.
 
 Consider the earlier example of tree learned from titanic dataset. In the first split or the root, all attributes/features are considered and the training data is divided into groups based on this split. We have 3 features, so will have 3 candidate splits. Now we will calculate how much accuracy each split will cost us, using a function. The split that costs least is chosen, which in our example is sex of the passenger. This algorithm is recursive in nature as the groups formed can be sub-divided using same strategy. Due to this procedure, this algorithm is also known as the greedy algorithm, as we have an excessive desire of lowering the cost. This makes the root node as best predictor/classifier.
 
-## Cost of a split
+## 1.6 Cost of a split
 
 Lets take a closer look at cost functions used for classification and regression. In both cases the cost functions try to find most homogeneous branches, or branches having groups with similar responses. This makes sense we can be more sure that a test data input will follow a certain path.
 
@@ -91,18 +91,18 @@ Lets take a closer look at cost functions used for classification and regression
 
 Lets say, we are predicting the price of houses. Now the decision tree will start splitting by considering each feature in training data. The mean of responses of the training data inputs of particular group is considered as prediction for that group. The above function is applied to all data points and cost is calculated for all candidate splits. Again the split with lowest cost is chosen. 
 
-## Gini Score
+## 1.7 Gini Score
 
 A Gini score gives an idea of how good a split is by how mixed the response classes are in the groups created by the split. Here, pk is proportion of same class inputs present in a particular group. A perfect class purity occurs when a group contains all inputs from the same class, in which case pk is either 1 or 0 and G = 0, where as a node having a 50–50 split of classes in a group has the worst purity, so for a binary classification it will have pk = 0.5 and G = 0.5.
 
 ![image](https://user-images.githubusercontent.com/60442877/147964100-87e5f82f-bf6a-4c63-9baa-4299c9c5f495.png)
 
-## When to stop splitting?
+## 1.8 When to stop splitting?
 
 You might ask when to stop growing a tree? As a problem usually has a large set of features, it results in large number of split, which in turn gives a huge tree. Such trees are complex and can lead to overfitting. So, we need to know when to stop? One way of doing this is to set a minimum number of training inputs to use on each leaf. For example we can use a minimum of 10 passengers to reach a decision(died or survived), and ignore any leaf that takes less than 10 passengers. Another way is to set maximum depth of your model. Maximum depth refers to the the length of the longest path from a root to a leaf.
 
 
-## Advantage
+## 1.9 Advantage
 
 - Simple to understand and to interpret. Trees can be visualised.
 - Requires little data preparation. Other techniques often require data normalisation, dummy variables need to be created and blank values to be removed. Note however that this module does not support missing values.
@@ -113,7 +113,7 @@ You might ask when to stop growing a tree? As a problem usually has a large set 
 - Possible to validate a model using statistical tests. That makes it possible to account for the reliability of the model.
 - Performs well even if its assumptions are somewhat violated by the true model from which the data were generated.
 
-## Disadvantage
+## 1.10 Disadvantage
 
 - Decision-tree learners can create over-complex trees that do not generalise the data well. This is called overfitting. Mechanisms such as pruning, setting the minimum number of samples required at a leaf node or setting the maximum depth of the tree are necessary to avoid this problem.
 - Decision trees can be unstable because small variations in the data might result in a completely different tree being generated. This problem is mitigated by using decision trees within an ensemble.
@@ -121,7 +121,7 @@ You might ask when to stop growing a tree? As a problem usually has a large set 
 - Decision tree learners create biased trees if some classes dominate. It is therefore recommended to balance the dataset prior to fitting with the decision tree.
 
 
-## How to avoid overfitting in Decision Trees?
+## 1.11 How to avoid overfitting in Decision Trees?
 
 The common problem with Decision trees, especially having a table full of columns, they fit a lot. Sometimes it looks like the tree memorized the training data set. If there is no limit set on a decision tree, it will give you 100% accuracy on the training data set because in the worse case it will end up making 1 leaf for each observation. Thus this affects the accuracy when predicting samples that are not part of the training set.
 
@@ -130,7 +130,7 @@ Here are two ways to remove overfitting:
 - Pruning Decision Trees.
 - Random Forest
 
-### Pruning
+### 1.111 Pruning
 
 The performance of a tree can be further increased by pruning. It involves removing the branches that make use of features having low importance. This way, we reduce the complexity of tree, and thus increasing its predictive power by reducing overfitting.
 
@@ -140,7 +140,7 @@ In pruning, you trim off the branches of the tree, i.e., remove the decision nod
 
 ![image](https://user-images.githubusercontent.com/60442877/147976814-ff33ab36-c60b-429d-9302-6bb814b86cdd.png)
 
-### Random Forest
+### 1.112 Random Forest
 
 Random Forest is an example of ensemble learning, in which we combine multiple machine learning algorithms to obtain better predictive performance.
 
