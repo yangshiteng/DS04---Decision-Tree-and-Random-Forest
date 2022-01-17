@@ -192,7 +192,13 @@ To avoid the overfitting in decision tree, we can:
 
 Also Note: Whe we build a tree, we don't know in advance if it is better to require 3 data rows per leaf or some other number, so, we test different values with something called 'Cross Validation' and pick the one that works best.
 
+2.2 https://www.youtube.com/watch?v=wpNl-JwwplA Feature Selection and Missing Data
 
+How to deal with missing data:
+1. Just delete
+2. If it is categorial feature, we can just impute this missing value with the label with most votes
+3. If it is numerical feature, we can either use mean value or median value to impute this missing data
+4. If there is high correlation between this numerical feature and another numerical feature, we can fit linear regression
 
 
 
