@@ -165,3 +165,21 @@ In the bagging technique, a data set is divided into N samples using randomized 
 - The very end of the tree is called 'Leaf Nodes' or just 'Leaves'
 - The nodes between Root and Leaves are called 'Internal Nodes' or 'Branches'
 
+The leaf that contains a mixture of labels is called 'impure leaf'
+The leaf that contains only one label is called 'pure leaf'
+
+There are several ways to quantify the impurity of leaves:
+1. Gini Impurity
+2. Entropy
+3. Information Gain
+
+Gini Impurity for Categorical Feature:
+1. 
+
+
+
+
+
+
+
+
