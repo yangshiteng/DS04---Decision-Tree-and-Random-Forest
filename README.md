@@ -200,6 +200,12 @@ How to deal with missing data:
 3. If it is numerical feature, we can either use mean value or median value to impute this missing data
 4. If there is high correlation between this numerical feature and another numerical feature, we can fit linear regression
 
+The feature selection in decision tree is based on the comparison of Gini Imuprity, the lowest the better
 
+2.3 https://www.youtube.com/watch?v=g9c66TUylZ4 Regression Tree
 
+- When we need to use something other than a straight line to make predictions, one option is to use the Regression Tree
+- In a Regression Tree, each leaf represents a numeric value which is calculated from the average value of classified data rows from training dataset
+- To find out the best threshold as the root for numeric predictor, firstly, we need to sort the predictor from lowest to highest, and calculate the adjacent average values, then, for each average value, we use it as root and build a simple tree, then, we need to calculate the sum of square of residuals, finally, we will use the threshold with lowest sum of square residuals as the root
+- Overall, in regression tree, we build the tree by comparing the sum of square residuals
 
