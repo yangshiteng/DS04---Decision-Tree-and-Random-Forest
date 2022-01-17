@@ -221,3 +221,9 @@ Test Score = SSR + alpha*T (Tree Complexity Penalty)
 
 Note: alpha is a tuning parameter that we finding using Cross Validation
 
+## 2.5 https://www.youtube.com/watch?v=J4Wdy0Wc_xQ Random Forest
+
+
+
+
+
