@@ -159,5 +159,9 @@ In the bagging technique, a data set is divided into N samples using randomized 
 
 ## 2.1 https://www.youtube.com/watch?v=_L39rN6gz7Y Decision Tree and Classification
 
-
+- When a Decision Tree classifies things into categories, it is called the Classification Tree
+- When a Decision Tree predicts numeric values, it is called the Regression Tree
+- The very top of the tree is called 'Root Node' or just 'Root'
+- The very end of the tree is called 'Leaf Nodes' or just 'Leaves'
+- The nodes between Root and Leaves are called 'Internal Nodes' or 'Branches'
 
