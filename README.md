@@ -174,9 +174,23 @@ There are several ways to quantify the impurity of leaves:
 3. Information Gain
 
 Gini Impurity for Categorical Feature:
-1. 
+1. Gini Impurity for single leaf = 1 - square of the probability of positive - square of the probability of negative
+2. Gini Impurity for the Categorical feature = weighted average of Gini Impurities for the leaves
 
+Gini Impurity for Numerical Feature:
+1. sort the rows of this numerical feature from lowest to highest
+2. calculate the average value for all adjacent values
+3. calculate the Gini impurity for every average value
 
+Compare the Gini Impurity among both numerical features and categorical features, and pick the one with lowest Gini Impurity as the root, then, continue the Gini Impurity calculation to determine the brances until the final leaf
+
+Just note, the output of leaf is the label with most votes
+
+To avoid the overfitting in decision tree, we can:
+1. Pruning
+2. We can put limits on how trees grow, for example, by requiring 3 or more rows per leaf
+
+Also Note: Whe we build a tree, we don't know in advance if it is better to require 3 data rows per leaf or some other number, so, we test different values with something called 'Cross Validation' and pick the one that works best.
 
 
 
