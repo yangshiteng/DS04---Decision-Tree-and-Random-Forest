@@ -192,7 +192,7 @@ To avoid the overfitting in decision tree, we can:
 
 Also Note: Whe we build a tree, we don't know in advance if it is better to require 3 data rows per leaf or some other number, so, we test different values with something called 'Cross Validation' and pick the one that works best.
 
-2.2 https://www.youtube.com/watch?v=wpNl-JwwplA Feature Selection and Missing Data
+## 2.2 https://www.youtube.com/watch?v=wpNl-JwwplA Feature Selection and Missing Data
 
 How to deal with missing data:
 1. Just delete
@@ -202,10 +202,22 @@ How to deal with missing data:
 
 The feature selection in decision tree is based on the comparison of Gini Imuprity, the lowest the better
 
-2.3 https://www.youtube.com/watch?v=g9c66TUylZ4 Regression Tree
+## 2.3 https://www.youtube.com/watch?v=g9c66TUylZ4 Regression Tree
 
 - When we need to use something other than a straight line to make predictions, one option is to use the Regression Tree
 - In a Regression Tree, each leaf represents a numeric value which is calculated from the average value of classified data rows from training dataset
 - To find out the best threshold as the root for numeric predictor, firstly, we need to sort the predictor from lowest to highest, and calculate the adjacent average values, then, for each average value, we use it as root and build a simple tree, then, we need to calculate the sum of square of residuals, finally, we will use the threshold with lowest sum of square residuals as the root
 - Overall, in regression tree, we build the tree by comparing the sum of square residuals
+
+## 2.4 https://www.youtube.com/watch?v=D0efHEJsfHo How to Prune Regression Trees
+
+Cost Complexity Pruning
+
+Calculate the Sum of Squared Residuals for each tree or sub-tree
+
+Weakest Link Pruning works by calculating a 'Tree Score' which is based on the Sum of Squared Residuals (SSR) for the tree or sub-tree and a 'Tree Complexity Penalty' that is a function of the number of leaves in the tree or sub-tree
+
+Test Score = SSR + alpha*T (Tree Complexity Penalty)
+
+Note: alpha is a tuning parameter that we finding using Cross Validation
 
