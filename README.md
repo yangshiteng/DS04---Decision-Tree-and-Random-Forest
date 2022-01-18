@@ -267,3 +267,17 @@ To review, the three ideas behind AdaBoost are:
 3. Each stump is made by taking the previous stump's mistakes into account
 
 Amount of Say = (1/2)*log[(1-totalerror)/totalerror]
+
+TotalError = the sum of sample weights of error rows
+
+New Sample Weight of misclassified samples = sample weight * exp(amount of say)
+
+New Sample Weight of correctly classified samples = sample weight * exp(-amount of say)
+
+We also need to normalize the New Sample Weight so that they add up to 1
+
+In theory, we could use the Sample Weights to calculate 'Weighted Gini Indexes' to determine which variable should split the next stump
+
+Alternatively, instead of using a Weighted Gini Index, we can make a new collection of samples that contains duplicate copies of the samples by using the sample weights, and the new collection of samples should be same size as the original, and we just give all the samples equal sample weights and build stump like before
+
+For AdaBoost, the final classification result is determined by comparing the total amount of say between the predicted positive and negative labels
