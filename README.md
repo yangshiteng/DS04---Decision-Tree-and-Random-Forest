@@ -250,3 +250,20 @@ Note: Bootstrapping the data plus using the aggregate to make a decision is call
 - After we revised our guesses, we do the whole steps again, we do this 6 or 7 times until the missing values converge (i.e. no longer change each time we recalculate)
 
 1 - the proximity values = distance between samples which result in 'Distance Matrix'
+
+## 2.7 https://www.youtube.com/watch?v=LsK-xG1cLYA AdaBoost
+
+- In a Random Forest, each time you make a tree, you make a full sized tree
+- In contrast, in a 'Forest of Trees' made with AdaBoost, the treesd are usually just a node and two leaves (Stump)
+- So, 'Forest of Trees' is actually Forest of Stumps
+- Stumps are not great at making accurate classifications since it can only use one variable to make a decision. Thus, Stumps are technically weak learners
+- In a Random Forest, each tree has an equal vote on the final classification
+- In contrast, in a Forest of Stumps made with AdaBoost, some stumps get more say in the final classification than others.
+- In a Random Forest, each decision tree is made independently of the others, in contrast, in a Forest of Stumps made with AdaBoost, order is important
+
+To review, the three ideas behind AdaBoost are:
+1. AdaBoost combines a lot of 'Weak Learners' to make classifications. The weak learners are almost always stumps
+2. Some stumps get more say in the classification than others
+3. Each stump is made by taking the previous stump's mistakes into account
+
+Amount of Say = (1/2)*log[(1-totalerror)/totalerror]
