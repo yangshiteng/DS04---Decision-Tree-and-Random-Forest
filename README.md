@@ -223,7 +223,30 @@ Note: alpha is a tuning parameter that we finding using Cross Validation
 
 ## 2.5 https://www.youtube.com/watch?v=J4Wdy0Wc_xQ Random Forest
 
+- Random Forest is made out of decision trees
+- Decision Trees are easy to build, easy to use and easy to interpret, but in practice they are not that awesome
+- In other works, Decision Trees work great with the data used to create them, but they are not flexible when it comes to classfying new samples
+- The good news is that Random Forests combine the simplicity of decision trees with flexibility resulting in a vast improvement in accuracy
 
+Step 1: Create a 'Bootstrapped' Dataset
+- To create a bootstrapped dataset that is the same size as the original, we just randomly select samples from the original dataset
+- The important detail is that we're allowed to pick the same sample more than once
 
+Step 2: Create a decision tree using the bootstrapped dataset, but only use a random subset of variables (or columns) at each step. For example, you ramdonly select 2 variables to determine which variable is best for root, then, for the remaining variables, you randomly select 2 variables to determine which variable is best for branch. Here the number '2' is a tuning parameter. 
 
+Using a bootstrapped sample and considering only a subset of the variables at each step results in a wide variety of trees. The variety is what makes random forests more effective than individual decision trees
 
+Note: Bootstrapping the data plus using the aggregate to make a decision is called 'Bagging'
+
+![image](https://user-images.githubusercontent.com/60442877/149911253-0495c15f-1ee2-49ec-8bea-2134b20701a0.png)
+
+## 2.6 https://www.youtube.com/watch?v=sQ870aTKqiM Random Forest: Missing Data and Clustering
+
+- For the missing data, we firstly have an initial guess for those missing values, then, we need to refine our guess
+- We refine the guess by determining which samples are similar to the one with missing data, so we need to determine the similarity first
+- Step 1: Build a random forest
+- Step 2: Run all of the data down all of the trees and we keep track of similar samples using a 'Proximity Matrix'
+- Step 3: We use the proximity values to make better guessses about the missing data
+- After we revised our guesses, we do the whole steps again, we do this 6 or 7 times until the missing values converge (i.e. no longer change each time we recalculate)
+
+1 - the proximity values = distance between samples which result in 'Distance Matrix'
