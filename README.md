@@ -282,7 +282,9 @@ Alternatively, instead of using a Weighted Gini Index, we can make a new collect
 
 For AdaBoost, the final classification result is determined by comparing the total amount of say between the predicted positive and negative labels
 
-## 2.8 Gradient Boost https://www.youtube.com/watch?v=3CC4N4z3GJc
+## 2.8 Gradient Boost 
+
+https://www.youtube.com/watch?v=3CC4N4z3GJc
 
 - When Gradient Boost is used to predict a continuous value, we say that we are using Gradient Boost for Regression
 - Using Gradient Boost for regression is different from doing linear regression
@@ -300,3 +302,9 @@ For AdaBoost, the final classification result is determined by comparing the tot
 Gradient Boost deals with overfitting problem by using a Learning Rate to scale the contribution from the new tree that is used to predict the residuals, and the learning rate is a value between 0 and 1
 
 The final predicted value = average value + learning rate * predicted Residual
+
+https://www.youtube.com/watch?v=2xudPOBz-vs
+
+- Loss Function is just something that evaluates the prediction performance
+- The Loss Function for the regression in Gradient Boost is: (1/2)*square of the difference between observed and predicted values
+- Gradient Boost usually uses trees larger than stumps
