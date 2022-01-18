@@ -282,7 +282,7 @@ Alternatively, instead of using a Weighted Gini Index, we can make a new collect
 
 For AdaBoost, the final classification result is determined by comparing the total amount of say between the predicted positive and negative labels
 
-## 2.8 https://www.youtube.com/watch?v=3CC4N4z3GJc Gradient Boost
+## 2.8 Gradient Boost https://www.youtube.com/watch?v=3CC4N4z3GJc
 
 - When Gradient Boost is used to predict a continuous value, we say that we are using Gradient Boost for Regression
 - Using Gradient Boost for regression is different from doing linear regression
