@@ -282,7 +282,7 @@ Alternatively, instead of using a Weighted Gini Index, we can make a new collect
 
 For AdaBoost, the final classification result is determined by comparing the total amount of say between the predicted positive and negative labels
 
-## 2.8 Gradient Boost 
+## 2.8 Gradient Boost for Regression 
 
 https://www.youtube.com/watch?v=3CC4N4z3GJc
 
@@ -308,3 +308,34 @@ https://www.youtube.com/watch?v=2xudPOBz-vs
 - Loss Function is just something that evaluates the prediction performance
 - The Loss Function for the regression in Gradient Boost is: (1/2)*square of the difference between observed and predicted values
 - Gradient Boost usually uses trees larger than stumps
+
+## 2.9 Gradient Boost for Classification
+
+### 2.91 Overview 
+
+https://www.youtube.com/watch?v=jxuNLH5dXCs
+
+- We start with a leaf that represents an initial log(odds) prediction which is just the log of the number of positive labels being numerator and the number of negative labels being denominator, with logistic function, we can also get the initial probability prediction 
+- We can measure how bad the initial prediction is by calculating Pseudo Residuals, the difference between the observed and the predicted probability values
+- Then, we will build a Tree to predict residuals, and we use the following formula to transform these leaf values into the outputs which will be used to predict new log(odds)
+![image](https://user-images.githubusercontent.com/60442877/150294561-b5c77ca7-b588-492d-92fc-e87a96fe618c.png)
+- Then, the output of each leaf will be used to predict new log(odds)
+- New log(odds) prediction = previous log(odds) + learning rate * output of decision tree
+- Then, we input these new log(odds) into the logistic function to get new probability prediction
+- Finally, we calculate the Pseudo Residuals as before, build the tree again, and repeat until we have made the maximum number of trees specified, or the residuals get super small
+
+
+NOTE: 
+1. In Gradient Boost, we limit the number of leaves in the trees we built
+2. In Gradient Boost for classification, we predict the log(odds), so the predicted value need to be transformed into probability by using logistic function
+3. Gradient Boost usually uses trees with between 8 to 32 leaves
+
+### 2.92 Math Details
+
+https://www.youtube.com/watch?v=StWY5QWMXCw
+
+The log-likelihood of the observed data given the predicted probability is:
+
+![image](https://user-images.githubusercontent.com/60442877/150310972-2f03af24-bf31-4fb8-a7d1-15f55f0e7785.png)
+
+If we want to use log-likelihood as a Loss Function, where smaller values represent better fitting models, then, we need to multiply the log-likelihood by -1
