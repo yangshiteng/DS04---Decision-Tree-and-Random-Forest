@@ -395,3 +395,53 @@ Big Notice: XGBoost also has a threshhold for the minimum number of Residuals in
 
 https://www.youtube.com/watch?v=ZVFeW798-2I
 
+Big Notice: 
+1. For regression, the loss function is just the square of residual for each observation
+2. For classification, the loss function is -{yi*log(pi) + (1-yi)*log(1-pi)} for binary classification, actually, the loss function is just the predicted probability being the true label
+
+## 2.13 Crazy Cool Optimizations about XGBoost
+
+https://www.youtube.com/watch?v=oRrKeUCEbq8
+
+### Approximate Greedy Algorithm
+
+- By using a Greedy Algorithm, XGBoost can build a tree relatively quickly. That means, when we have a lot of observations or feature variables, then, the Greedy Algorithm becomes slow or even take forever because it still has to look at every possible threshold
+- This is where the 'Approximate Greedy Algorithm' comes in
+- When we have a lot of observations for one single numerical feature, instead of testing every single threshold, we could divide the data into Quantiles and only use quantiles as candidate thresholds to split the observations.
+- However, the more quantiles we have, the more thresholds we will have to test, and that means it will take longer to build the tree
+- For XGBoost, the 'Approximate Greedy Algorithm' means that instead of testing all possible thresholds, we only test the quantiles
+- Bt default, the approximate greedy algrotihm uses about 33 quantiles
+
+### Parallel Learning and Weighted Quantile Sketch
+
+- When you have tons and tons of data, so much data that you can't fit it all into a computer's memory at one time, then things that looks simple, like sorting a list of numbers and finding quantiles, become really slow
+- To get around this problem, a class of algorithms, called 'Sketches', can quickly create approximate solutions
+- For example, imagine we are just using a ton of Dosages to predict Drug Effectiveness, and imagine splitting this big dataset into small pieces and putting the pieces on different computers on a network
+- The 'Quantile Sketch Algorithm' combines the values from each computer to make an approximate histogram, then the approximate histogram is used to calculate approximate quantiles, and the approximate greedy algorithm uses approximate quantiles
+- With weighted quantiles, each observation has a corresponding weight and the sum of the weights are the same in each quantile
+- When using XGBoost for classification, the weights for the Weighted Quantile Sketch are calculated from the previously predicted probabilities*(1-previously predicted probabilities)
+- When using XGBoost for regression, the weights for the Weighted Quantile Sketch is just the number of residuals per observation which is just 1
+- So, instead of using equal quantiles, XGBoost tries to make quantiles that have a similar sum of weights
+
+Overall, when we have a huge training dataset, XGBoost uses an Approximate Greedy Algorithm and that means using Parallel Learning to split up the dataset so that multiple computers can work on it at the same time, and a Weighted Quantile Sketch merges the data into an approximate histogram, and the histogram is divided into weighted quantiles that put observations with low confidence predictions into quantiles with fewer observations
+
+Note: XGBoost only uses the Approximate Greedy Algrorithm, Parallel Learning and the Weighted Quantile Sketch when the training dataset is huge. When the Training datasets are small, XGBoost just uses greedy algorithm
+
+### Sparsity-Aware Split Finding
+
+- Sparsity-Aware Split Finding tells us how to build trees with missing data and how to deal with new observations when there is missing data
+
+### Cache-Aware Access
+
+- The basic idea is that inside each computer we have a CPU and that CPU has a small amount of Cache Memory. The CPU can use this memory faster than any other memory in the computer. The CPU is also attached to a large amount of Main Memory. While the main memory is larger than the cache, it takes longer to use. Lastly, the CPU is also attached to the Hard Drive. The Hard Drive can store the most stuff, but is the slowest of all memory options. 
+- If you want your program to run really fast, the goal is to maximize what you can do with the cache memory
+- So, XGBoost puts the Gradients and Hessians in the Cache so that it can rapidly calculate Similarity Score and Output Values.
+
+
+### Blocks for Out-of-Core Computation
+
+- When the dataset is too large for the Cache and Main Memory, then, at least some of it, must be stored on the Hard Drive
+- Because reading and writing data to the Hard Drive is super slow, XGBoost tries to minimize these actions by compressing the data
+- Even though the CPU must spend some time decompressing the data that comes from the Hard Drive, it can do this faster than the Hard Drive can read the data
+- In other words, by spending a little bit of CPU time uncompressing the data, we can avoid spending a lot of time accessing the Hard Drive
+- Also, when there is more than one Hard Drive available for storage, XGBoost uses a database technique called Sharding to speed up disk access
