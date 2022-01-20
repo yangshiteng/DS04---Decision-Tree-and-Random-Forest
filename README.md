@@ -240,7 +240,9 @@ Note: Bootstrapping the data plus using the aggregate to make a decision is call
 
 ![image](https://user-images.githubusercontent.com/60442877/149911253-0495c15f-1ee2-49ec-8bea-2134b20701a0.png)
 
-## 2.6 https://www.youtube.com/watch?v=sQ870aTKqiM Random Forest: Missing Data and Clustering
+## 2.6  Random Forest: Missing Data and Clustering
+
+https://www.youtube.com/watch?v=sQ870aTKqiM
 
 - For the missing data, we firstly have an initial guess for those missing values, then, we need to refine our guess
 - We refine the guess by determining which samples are similar to the one with missing data, so we need to determine the similarity first
@@ -251,7 +253,9 @@ Note: Bootstrapping the data plus using the aggregate to make a decision is call
 
 1 - the proximity values = distance between samples which result in 'Distance Matrix'
 
-## 2.7 https://www.youtube.com/watch?v=LsK-xG1cLYA AdaBoost
+## 2.7 AdaBoost
+
+https://www.youtube.com/watch?v=LsK-xG1cLYA
 
 - In a Random Forest, each time you make a tree, you make a full sized tree
 - In contrast, in a 'Forest of Trees' made with AdaBoost, the treesd are usually just a node and two leaves (Stump)
@@ -329,6 +333,7 @@ NOTE:
 1. In Gradient Boost, we limit the number of leaves in the trees we built
 2. In Gradient Boost for classification, we predict the log(odds), so the predicted value need to be transformed into probability by using logistic function
 3. Gradient Boost usually uses trees with between 8 to 32 leaves
+4. In practice, the tree we build is 100 and more
 
 ### 2.92 Math Details
 
@@ -339,3 +344,24 @@ The log-likelihood of the observed data given the predicted probability is:
 ![image](https://user-images.githubusercontent.com/60442877/150310972-2f03af24-bf31-4fb8-a7d1-15f55f0e7785.png)
 
 If we want to use log-likelihood as a Loss Function, where smaller values represent better fitting models, then, we need to multiply the log-likelihood by -1
+
+## 2.10 XGBoost for Regression
+
+https://www.youtube.com/watch?v=OtD8wVaFm6E
+
+- XGBoost is desgined to be used with large, complicated datasets
+- The very first step in fitting XGBoost to the training dataset is to make an initial prediction
+- This initial prediction can be anything, but by default, it is 0.5, regardless of whether you are using XGBoost for Regression or Classification
+- Unlike Gradient Boost in whcih we need to build a lot of trees, XGBoost uses a unique tree that we can call it 'XGBoost Tree'
+- We start out the XGBoost tree from a single leaf and all the residuals (observed - initial prediction) go to that leaf
+- Then, we will calculate 'Quality Score' or 'Similarity Score' for the Residuals
+![image](https://user-images.githubusercontent.com/60442877/150336402-838fed4a-937d-4f79-8447-2d45dfc1bfda.png)
+where the lambda is a regularization parameter
+
+
+
+
+
+
+
+
