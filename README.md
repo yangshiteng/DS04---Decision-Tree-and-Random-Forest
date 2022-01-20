@@ -370,11 +370,28 @@ where the lambda is a regularization parameter
 - In XGBoost, the learning rate is called 'eta', and the default value is 0.3
 - Then, we can get new prediction for each observation, and obtain new residuals, and we will use these residuals to build new XGBoost trees until the Residuals are super small or we have reached the maximum number
 
+## 2.11 XGBoost for Classification 
+
+https://www.youtube.com/watch?v=8b1JEDvenQU
+
+- The very first step in fitting XGBoost to the Training dataset is to make an initial prediction
+- This prediction can be anything, for example, it can be the sample proportion of being positive in traning data, but by default, it is just 0.5, regardless of whether you are using XGBoost for Regression or Classification
+- Then, we calculate the Residual which is the observed probability - initial probability
+- Then, we fit an XGBoost tree to these residuals
+- Similar to the XGBoost for regression, we also need the similarity score to build the tree, but different from the regression XGBoost, the similarity score for classification is different formua which is given below:
+![image](https://user-images.githubusercontent.com/60442877/150359920-9adbc80e-4195-4635-b965-eccd2620207c.png)
+- Then, just like what we did in XGBoost for regression, we calculate the similarity scores and gain values for each threshold, and build the XGBoost Tree
+- Then, we will do pruning by calculating the difference between gain values and gamma (tree complexity parameter)
+- The output of leaf of XGBoost tree for classification is given below which is just the sum of residuals over the sum of the previously predicted probability*(1 - previously predicted probability) + lambda
+![image](https://user-images.githubusercontent.com/60442877/150364563-0ee58ad8-2dca-4c78-aa8c-55df4748ef3c.png)
+- Finally, we will make predictions with initial log(odds)+ learning rate* the output from tree, and put the predicted value into the logistic function to get the predicted probability
+- Then, we calculate the new residual, and build XGBoost tree again until we reach the maximum number of the tree or the residuals are very small
 
 
+Big Notice: XGBoost also has a threshhold for the minimum number of Residuals in each leaf which is determined by calculating one metric called 'Cover' (in python, that is the parameter min_child_weight), and the default value is 1. In XGBoost for regression, the Cover is just equal to the number of resisuals in the leaf. In XGBoost for classification, the Cover is equal to the sum of the previously predicted probability*(1 - previously predicted probability) for each residual in the leaf. If the cover in one leaf is less than our specified value, the leaf will be removed.
 
 
+## 2.12 XGBoost Math Detail
 
-
-
+https://www.youtube.com/watch?v=ZVFeW798-2I
 
