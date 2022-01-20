@@ -352,11 +352,24 @@ https://www.youtube.com/watch?v=OtD8wVaFm6E
 - XGBoost is desgined to be used with large, complicated datasets
 - The very first step in fitting XGBoost to the training dataset is to make an initial prediction
 - This initial prediction can be anything, but by default, it is 0.5, regardless of whether you are using XGBoost for Regression or Classification
-- Unlike Gradient Boost in whcih we need to build a lot of trees, XGBoost uses a unique tree that we can call it 'XGBoost Tree'
 - We start out the XGBoost tree from a single leaf and all the residuals (observed - initial prediction) go to that leaf
 - Then, we will calculate 'Quality Score' or 'Similarity Score' for the Residuals
 ![image](https://user-images.githubusercontent.com/60442877/150336402-838fed4a-937d-4f79-8447-2d45dfc1bfda.png)
 where the lambda is a regularization parameter
+- Then, we need to calculate the Gain values of splitting the Residuals into two groups by different thresholds, better splitting has higher gain value
+![image](https://user-images.githubusercontent.com/60442877/150337454-d93464e5-2e30-4639-8da7-b530c5023270.png)
+- Then, we will choose the threshold with the highest gain value for the root in the tree
+- After that, we will find out the branches by comparing the gain values
+- Just notice, by default setting, we limit the tree depth to 6 levels
+- Then, we will prune the XGBoost tree based on the Gain values, we start by picking a number denoted as 'gamma' which is called 'Tree Complexity Parameter', we then calculate the difference between the Gain and the gamma, if the difference is positive, keep the node, otherwise, remove node. We start the calculattion from the lowest bracch in the tree. If the difference in root is negative, but the branch is positive, keep the root
+- Remember, lambda is a Regularization Parameter, which means that it is intended to reduce the prediction's sensitivity to individual observations, and when lambda > 0, it is easier to prune leaves because the values for Gain are smaller
+- Lambda in the formula of similarity score help us avoid overfitting the data
+- After the XGBoost tree built, we need to determine the output value for each leaf, which is given as following:
+![image](https://user-images.githubusercontent.com/60442877/150340760-62aa307a-4788-451d-b0b9-4538b4b820be.png)
+- Just like Gradient Boost, XGBoost makes new predictions by starting with the initial prediction and adding the output of the tree scaled by a learning rate
+- In XGBoost, the learning rate is called 'eta', and the default value is 0.3
+- Then, we can get new prediction for each observation, and obtain new residuals, and we will use these residuals to build new XGBoost trees until the Residuals are super small or we have reached the maximum number
+
 
 
 
