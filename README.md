@@ -16,7 +16,7 @@ A decision tree is drawn upside down with its root at the top. In the image on t
 
 ![image](https://user-images.githubusercontent.com/60442877/147900468-0addb3d1-35a1-465e-ab14-f505ccf4ee12.png)
 
-Although, a real dataset will have a lot more features and this will just be a branch in a much bigger tree, but you can’t ignore the simplicity of this algorithm. The feature importance is clear and relations can be viewed easily. This methodology is more commonly known as learning decision tree from data and above tree is called Classification tree as the target is to classify passenger as survived or died. Regression trees are represented in the same manner, just they predict continuous values like price of a house. 
+Although, a real dataset will have a lot more features and this will just be a branch in a much bigger tree, but you can’t ignore the simplicity of this algorithm. The feature importance is clear and relations can be viewed easily. This methodology is more commonly known as learning decision tree from data, and above tree is called Classification tree as the target is to classify passenger as survived or died. Regression trees are represented in the same manner, just they predict continuous values like price of a house. 
 
 In general, Decision Tree algorithms are referred to as CART or Classification and Regression Trees.
 
