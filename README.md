@@ -43,44 +43,6 @@ Types of decision trees are based on the type of target variable we have. It can
 
 Decision trees classify the examples by sorting them down the tree from the root to some leaf/terminal node, with the leaf/terminal node providing the classification of the example.
 
-The primary challenge in the decision tree implementation is to identify which attributes do we need to consider as the root node and each level. Handling this is to know as the attributes selection. We have different attributes selection measures to identify the attribute which can be considered as the root note at each level.
-
-## 1.3 Attribute Selection Measures
-
-If the dataset consists of N attributes then deciding which attribute to place at the root or at different levels of the tree as internal nodes is a complicated step. By just randomly selecting any node to be the root can’t solve the issue. If we follow a random approach, it may give us bad results with low accuracy.
-
-For solving this attribute selection problem, researchers worked and devised some solutions. They suggested using some criteria like :
-
-- Entropy：a measure of the randomness in the information being processed. The higher the entropy, the harder it is to draw any conclusions from that information.
-- Information gain： a statistical property that measures how well a given attribute separates the training examples according to their target classification.
-- Gini index： You can understand the Gini index as a cost function used to evaluate splits in the dataset. 
-- Gain Ratio
-- Reduction in Variance： an algorithm used for continuous target variables (regression problems). This algorithm uses the standard formula of variance to choose the best split. The split with lower variance is selected as the criteria to split the population.
-- Chi-Square
-
-These criteria will calculate values for every attribute. The values are sorted, and attributes are placed in the tree by following the order i.e, the attribute with a high value(in case of information gain) is placed at the root.
-
-While using Information Gain as a criterion, we assume attributes to be categorical, and for the Gini index, attributes are assumed to be continuous.
-
-## 1.5 Recursive Binary Splitting
-
-In this procedure all the features are considered and different split points are tried and tested using a cost function. The split with the best cost (or lowest cost) is selected.
-
-Consider the earlier example of tree learned from titanic dataset. In the first split or the root, all attributes/features are considered and the training data is divided into groups based on this split. We have 3 features, so will have 3 candidate splits. Now we will calculate how much accuracy each split will cost us, using a function. The split that costs least is chosen, which in our example is sex of the passenger. This algorithm is recursive in nature as the groups formed can be sub-divided using same strategy. Due to this procedure, this algorithm is also known as the greedy algorithm, as we have an excessive desire of lowering the cost. This makes the root node as best predictor/classifier.
-
-## 1.6 Cost of a split
-
-Lets take a closer look at cost functions used for classification and regression. In both cases the cost functions try to find most homogeneous branches, or branches having groups with similar responses. This makes sense we can be more sure that a test data input will follow a certain path.
-
-![image](https://user-images.githubusercontent.com/60442877/147963728-14371960-5fce-4f65-9121-783590127833.png)
-
-Lets say, we are predicting the price of houses. Now the decision tree will start splitting by considering each feature in training data. The mean of responses of the training data inputs of particular group is considered as prediction for that group. The above function is applied to all data points and cost is calculated for all candidate splits. Again the split with lowest cost is chosen. 
-
-## 1.7 Gini Score
-
-A Gini score gives an idea of how good a split is by how mixed the response classes are in the groups created by the split. Here, pk is proportion of same class inputs present in a particular group. A perfect class purity occurs when a group contains all inputs from the same class, in which case pk is either 1 or 0 and G = 0, where as a node having a 50–50 split of classes in a group has the worst purity, so for a binary classification it will have pk = 0.5 and G = 0.5.
-
-![image](https://user-images.githubusercontent.com/60442877/147964100-87e5f82f-bf6a-4c63-9baa-4299c9c5f495.png)
 
 ## 1.8 When to stop splitting?
 
