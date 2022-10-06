@@ -26,8 +26,8 @@ So, what is actually going on in the background? Growing a tree involves decidin
 
 Types of decision trees are based on the type of target variable we have. It can be of two types:
 
-- Categorical Variable Decision Tree: Decision Tree which has a categorical target variable then it called a Categorical variable decision tree.
-- Continuous Variable Decision Tree: Decision Tree has a continuous target variable then it is called Continuous Variable Decision Tree.
+-  Classification Tree: Decision Tree which has a categorical target variable then it called a Categorical variable decision tree.
+-  Regression Tree: Decision Tree has a continuous target variable then it is called Continuous Variable Decision Tree.
 
 ## 1.2 Important Terminology related to Decision Trees
 
