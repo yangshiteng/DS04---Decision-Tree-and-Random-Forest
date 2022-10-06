@@ -45,20 +45,7 @@ Decision trees classify the examples by sorting them down the tree from the root
 
 The primary challenge in the decision tree implementation is to identify which attributes do we need to consider as the root node and each level. Handling this is to know as the attributes selection. We have different attributes selection measures to identify the attribute which can be considered as the root note at each level.
 
-## 1.3 How do Decision Trees work?
-
-The decision of making strategic splits heavily affects a tree’s accuracy. The decision criteria are different for classification and regression trees.
-
-Decision trees use multiple algorithms to decide to split a node into two or more sub-nodes. The creation of sub-nodes increases the homogeneity of resultant sub-nodes. In other words, we can say that the purity of the node increases with respect to the target variable. The decision tree splits the nodes on all available variables and then selects the split which results in most homogeneous sub-nodes.
-
-The algorithm selection is also based on the type of target variables. Let us look at some algorithms used in Decision Trees:
-
-![image](https://user-images.githubusercontent.com/60442877/147969965-7c082d49-1428-43f9-aa11-4f3d917f598d.png)
-
-The ID3 algorithm builds decision trees using a top-down greedy search approach through the space of possible branches with no backtracking. A greedy algorithm, as the name suggests, always makes the choice that seems to be the best at that moment.
-
-
-## 1.4 Attribute Selection Measures
+## 1.3 Attribute Selection Measures
 
 If the dataset consists of N attributes then deciding which attribute to place at the root or at different levels of the tree as internal nodes is a complicated step. By just randomly selecting any node to be the root can’t solve the issue. If we follow a random approach, it may give us bad results with low accuracy.
 
