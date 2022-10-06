@@ -20,7 +20,7 @@ Although, a real dataset will have a lot more features and this will just be a b
 
 In general, Decision Tree algorithms are referred to as CART or Classification and Regression Trees.
 
-So, what is actually going on in the background? Growing a tree involves deciding on which features to choose and what conditions to use for splitting, along with knowing when to stop. As a tree generally grows arbitrarily, you will need to trim it down for it to look beautiful. Lets start with a common technique used for splitting.
+So, what is actually going on in the background? Growing a tree involves deciding on which features to choose and what conditions to use for splitting, along with knowing when to stop to avoid overfitting. As a tree generally grows arbitrarily, you will need to trim it down for it to look beautiful. Lets start with a common technique used for splitting.
 
 ## Types of Decision Trees
 
